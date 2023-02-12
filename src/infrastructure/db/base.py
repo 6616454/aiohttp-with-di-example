@@ -6,7 +6,7 @@ class Base(DeclarativeBase):
     pass
 
 
-def create_engine(database_url: str, echo_mode: bool):
+def create_engine(database_url: str, echo_mode: bool = False):
     engine = create_async_engine(url=database_url, echo=echo_mode)
     return engine
 
