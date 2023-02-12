@@ -12,6 +12,8 @@ aiohttp-apispec = "^2.2.3"
 sqlalchemy = "^2.0.3"
 sqlalchemy2-stubs = "^0.0.2a32"
 alembic = "^1.9.3"
+envdataclass = "^0.4"
+rodi = "^2.0.0"
 
 
 [build-system]
