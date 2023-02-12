@@ -1,7 +1,7 @@
 from aiohttp.web_routedef import RouteTableDef
 from aiohttp_apispec import docs, response_schema
 
-from src.presentation.api.classes import Request
+from src.presentation.api import Request
 from src.presentation.api.handlers.responses.posts import OutputPost
 
 router = RouteTableDef()
