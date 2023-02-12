@@ -4,7 +4,7 @@ from aiohttp_apispec import docs, response_schema
 
 from src.business_logic.services.post import PostService
 from src.presentation.api import Request
-from src.presentation.api.handlers.responses.posts import OutputPost
+from src.presentation.api.handlers.responses.post import OutputPost
 
 router = RouteTableDef()
 

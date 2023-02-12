@@ -1,6 +1,6 @@
 from aiohttp.web_routedef import UrlDispatcher
 
-from src.presentation.api.handlers.posts import router as posts_router
+from src.presentation.api.handlers.post import router as posts_router
 
 
 def setup_routes(router: UrlDispatcher) -> None:
