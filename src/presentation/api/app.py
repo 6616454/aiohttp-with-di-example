@@ -1,8 +1,8 @@
 from aiohttp.web import run_app
-from aiohttp.web_app import Application
 
 from aiohttp_apispec import setup_aiohttp_apispec
 
+from src.presentation.api.classes import Application
 from src.presentation.api.handlers import setup_routes
 
 
