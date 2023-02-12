@@ -1,17 +1,22 @@
 from envdataclass import from_file
 from rodi import ActivationScope
-from sqlalchemy.ext.asyncio import AsyncEngine
-from sqlalchemy.orm import sessionmaker
 
-from src.infrastructure.db.base import create_pool
-from src.settings import DBSettings
-
-
-def provide_db_settings(scope: ActivationScope) -> DBSettings:
-    return from_file(DBSettings, '.env')
+from src.business_logic.services.post import PostService
+from src.infrastructure.db.client import SomeDatabaseClient
+from src.settings import AppSettings
 
 
-def provide_pool_sessions(scope: ActivationScope) -> sessionmaker:
-    engine = scope.provider.get(AsyncEngine)
+def build_settings(scope: ActivationScope) -> AppSettings:
+    return from_file(AppSettings, '.env')
 
-    return create_pool(engine)
+
+def build_db_client(scope: ActivationScope) -> SomeDatabaseClient:
+    settings = scope.provider.get(AppSettings)
+
+    return SomeDatabaseClient(settings.foo)
+
+
+def build_post_service(scope: ActivationScope) -> PostService:
+    db_client = scope.provider.get(SomeDatabaseClient)
+
+    return PostService(db_client=db_client)

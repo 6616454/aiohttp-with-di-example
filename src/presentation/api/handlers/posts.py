@@ -1,6 +1,8 @@
+from aiohttp.web_response import json_response
 from aiohttp.web_routedef import RouteTableDef
 from aiohttp_apispec import docs, response_schema
 
+from src.business_logic.services.post import PostService
 from src.presentation.api import Request
 from src.presentation.api.handlers.responses.posts import OutputPost
 
@@ -15,7 +17,11 @@ router = RouteTableDef()
 @response_schema(OutputPost())
 @router.get('/posts/{id}')
 async def get_post(request: Request):
-    ...
+    post_service = request.app.container.resolve(PostService)
+
+    post = post_service.get_post_by_id(int(request.match_info['id']))
+
+    return json_response(OutputPost().dump(post))
 
 
 @docs(

@@ -2,7 +2,6 @@ from dataclasses import dataclass
 
 
 @dataclass
-class Post:
-    id: int
+class PostDTO:
     title: str
     body: str
