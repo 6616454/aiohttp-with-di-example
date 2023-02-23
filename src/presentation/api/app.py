@@ -4,13 +4,13 @@ from aiohttp_apispec import setup_aiohttp_apispec
 
 from src.di import setup_di
 from src.presentation.api import Application
-from src.presentation.api.handlers import setup_routes
+from src.presentation.api.controllers import setup_controllers
 
 
 def build_app() -> Application:
     app = Application()
 
-    setup_routes(router=app.router)
+    setup_controllers(router=app.router)
     setup_aiohttp_apispec(
         app=app,
         title='My Documentation',
